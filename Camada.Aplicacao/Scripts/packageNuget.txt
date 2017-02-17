@@ -1,0 +1,14 @@
+﻿Install-Package NuGet.VisualStudio
+Install-Package Twitter.Bootstrap
+//Install-Package Twitter.Bootstrap.Bootswatch.Cosmo
+//Install-Package Twitter.Bootstrap.Bootswatch.Yeti
+
+Install-Package jquery.datatables
+Install-Package FontAwesome
+Install-Package jQuery
+Install-Package jQuery.UI.Combined
+//Install-Package EntityFramework
+Install-Package jQuery.Validation
+Install-Package jQuery.Validation.Unobtrusive
+Install-Package Modernizr
+Install-Package Respond

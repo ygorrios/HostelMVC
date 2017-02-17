@@ -1,0 +1,1563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HostelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Action_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DT_reg" Type="datetime" Nullable="false" />
+          <Property Name="LogLogin" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_Money_Count" Type="int" />
+          <Property Name="ID_Money_Count2" Type="int" />
+          <Property Name="ID_Money_Count3" Type="int" />
+        </EntityType>
+        <EntityType Name="Calc_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DT_End" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Card_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DOCUMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FILE_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FILE_SIZE" Type="bigint" Nullable="false" />
+          <Property Name="FILE_TYPE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FILE_CONTENT" Type="varbinary(max)" Nullable="false" />
+          <Property Name="DT_INSERT" Type="datetime" Nullable="false" />
+          <Property Name="DT_DELETE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EGALI_PASSWORDS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DT_Delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EGALI_PASSWORDS_HISTORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DT_Reg" Type="datetime" Nullable="false" />
+          <Property Name="LogLogin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_EGALI_PASSWORDS" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="House_Keeping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Room_Number" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adults" Type="int" Nullable="false" />
+          <Property Name="DT_Registro" Type="datetime" Nullable="false" />
+          <Property Name="LogLogin" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_LIST_TYPE" Type="int" Nullable="false" />
+          <Property Name="CHECK_IN" Type="datetime" />
+          <Property Name="CHECK_OUT" Type="datetime" />
+          <Property Name="DT_START_BLOCK" Type="datetime" />
+          <Property Name="DT_START_BOOK" Type="datetime" />
+          <Property Name="NOTES" Type="varchar(max)" />
+          <Property Name="FIRST_NAME_GUEST" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LAST_NAME_GUEST" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LOGLOGIN" Type="varchar" MaxLength="50" />
+          <Property Name="ID_DOCUMENT" Type="int" />
+        </EntityType>
+        <EntityType Name="LIST_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControllerAction" Type="varchar(max)" Nullable="false" />
+          <Property Name="DT_Reg" Type="datetime" Nullable="false" />
+          <Property Name="LogLogin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Error" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ActionParameters" Type="varchar(max)" />
+          <Property Name="ID_LOG_TYPE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Money_Count">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Qnt_1_Cent" Type="int" Nullable="false" />
+          <Property Name="Qnt_2_Cents" Type="int" Nullable="false" />
+          <Property Name="Qnt_5_Cents" Type="int" Nullable="false" />
+          <Property Name="Qnt_10_Cents" Type="int" Nullable="false" />
+          <Property Name="Qnt_20_Cents" Type="int" Nullable="false" />
+          <Property Name="Qnt_50_Cents" Type="int" Nullable="false" />
+          <Property Name="Qnt_1_Euro" Type="int" Nullable="false" />
+          <Property Name="Qnt_2_Euros" Type="int" Nullable="false" />
+          <Property Name="Qnt_5_Euros" Type="int" Nullable="false" />
+          <Property Name="Qnt_10_Euros" Type="int" Nullable="false" />
+          <Property Name="Qnt_20_Euros" Type="int" Nullable="false" />
+          <Property Name="Qnt_50_Euros" Type="int" Nullable="false" />
+          <Property Name="Qnt_100_Euros" Type="int" Nullable="false" />
+          <Property Name="Qnt_200_Euros" Type="int" Nullable="false" />
+          <Property Name="Qnt_500_Euros" Type="int" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DT_Reg" Type="datetime" Nullable="false" />
+          <Property Name="LogLogin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Calc_Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Report_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SHIFT_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PRODUCT_TYPE" Type="int" Nullable="false" />
+          <Property Name="AMOUNT" Type="int" Nullable="false" />
+          <Property Name="DT_Entrada" Type="datetime" Nullable="false" />
+          <Property Name="LOGLOGIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_ACTION_TYPE" Type="int" Nullable="false" />
+          <Property Name="ID_TOTAL_TRANSACTION" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Total_Transactions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalTransactions" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalFinal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DifferenceFinalCalc" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DT_Reg" Type="datetime" />
+          <Property Name="LogLogin" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Calc" Type="int" />
+          <Property Name="ID_Last_Transaction" Type="int" />
+          <Property Name="ID_Report_Type" Type="int" />
+          <Property Name="Last_Cashier_Total" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ID_SHIFT_TYPE" Type="int" />
+          <Property Name="DayMonthYearReference" Type="date" />
+        </EntityType>
+        <EntityType Name="Transaction_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DT_Reg" Type="datetime" Nullable="false" />
+          <Property Name="LogLogin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Reservation_Number" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Transaction_Type" Type="int" />
+          <Property Name="ID_Payment_Type" Type="int" />
+          <Property Name="ID_Card_Type" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_Total_Transactions" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HostelDB.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DT_End" Type="datetime" />
+          <Property Name="ID_USER_TYPE" Type="int" />
+        </EntityType>
+        <EntityType Name="USER_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Calc_Money_Count">
+          <End Role="Money_Count" Type="Self.Money_Count" Multiplicity="0..1" />
+          <End Role="Calc" Type="Self.Calc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Money_Count">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calc">
+              <PropertyRef Name="ID_Money_Count" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calc_Money_Count1">
+          <End Role="Money_Count" Type="Self.Money_Count" Multiplicity="0..1" />
+          <End Role="Calc" Type="Self.Calc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Money_Count">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calc">
+              <PropertyRef Name="ID_Money_Count2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calc_Money_Count2">
+          <End Role="Money_Count" Type="Self.Money_Count" Multiplicity="0..1" />
+          <End Role="Calc" Type="Self.Calc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Money_Count">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calc">
+              <PropertyRef Name="ID_Money_Count3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS">
+          <End Role="EGALI_PASSWORDS" Type="Self.EGALI_PASSWORDS" Multiplicity="1" />
+          <End Role="EGALI_PASSWORDS_HISTORY" Type="Self.EGALI_PASSWORDS_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EGALI_PASSWORDS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EGALI_PASSWORDS_HISTORY">
+              <PropertyRef Name="ID_EGALI_PASSWORDS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LIST_DOCUMENT">
+          <End Role="DOCUMENT" Type="Self.DOCUMENT" Multiplicity="0..1" />
+          <End Role="LIST" Type="Self.LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LIST">
+              <PropertyRef Name="ID_DOCUMENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LIST_LIST_TYPE1">
+          <End Role="LIST_TYPE" Type="Self.LIST_TYPE" Multiplicity="1" />
+          <End Role="LIST" Type="Self.LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LIST_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LIST">
+              <PropertyRef Name="ID_LIST_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Log_Type">
+          <End Role="Log_Type" Type="Self.Log_Type" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Log_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="ID_LOG_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Money_Count_Calc_Type">
+          <End Role="Calc_Type" Type="Self.Calc_Type" Multiplicity="1" />
+          <End Role="Money_Count" Type="Self.Money_Count" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calc_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Money_Count">
+              <PropertyRef Name="ID_Calc_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Action_Type">
+          <End Role="Action_Type" Type="Self.Action_Type" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ID_ACTION_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Product_Type">
+          <End Role="Product_Type" Type="Self.Product_Type" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ID_PRODUCT_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Total_Transactions">
+          <End Role="Total_Transactions" Type="Self.Total_Transactions" Multiplicity="0..1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Transactions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ID_TOTAL_TRANSACTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_Calc">
+          <End Role="Calc" Type="Self.Calc" Multiplicity="0..1" />
+          <End Role="Total_Transactions" Type="Self.Total_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions">
+              <PropertyRef Name="ID_Calc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_Report_Type">
+          <End Role="Report_Type" Type="Self.Report_Type" Multiplicity="0..1" />
+          <End Role="Total_Transactions" Type="Self.Total_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions">
+              <PropertyRef Name="ID_Report_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_SHIFT_TYPE">
+          <End Role="SHIFT_TYPE" Type="Self.SHIFT_TYPE" Multiplicity="0..1" />
+          <End Role="Total_Transactions" Type="Self.Total_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIFT_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions">
+              <PropertyRef Name="ID_SHIFT_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_Total_Transactions">
+          <End Role="Total_Transactions" Type="Self.Total_Transactions" Multiplicity="0..1" />
+          <End Role="Total_Transactions1" Type="Self.Total_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Transactions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions1">
+              <PropertyRef Name="ID_Last_Transaction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_Card_Type">
+          <End Role="Card_Type" Type="Self.Card_Type" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="ID_Card_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_Payment_Type">
+          <End Role="Payment_Type" Type="Self.Payment_Type" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="ID_Payment_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_TotalTransactions">
+          <End Role="Total_Transactions" Type="Self.Total_Transactions" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Transactions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="ID_Total_Transactions" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_Transaction_Type">
+          <End Role="Transaction_Type" Type="Self.Transaction_Type" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="ID_Transaction_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_USER_TYPE">
+          <End Role="USER_TYPE" Type="Self.USER_TYPE" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_USER_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HostelModelStoreContainer">
+          <EntitySet Name="Action_Type" EntityType="Self.Action_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calc" EntityType="Self.Calc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calc_Type" EntityType="Self.Calc_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card_Type" EntityType="Self.Card_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCUMENT" EntityType="Self.DOCUMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EGALI_PASSWORDS" EntityType="Self.EGALI_PASSWORDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EGALI_PASSWORDS_HISTORY" EntityType="Self.EGALI_PASSWORDS_HISTORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="House_Keeping" EntityType="Self.House_Keeping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIST" EntityType="Self.LIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIST_TYPE" EntityType="Self.LIST_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log_Type" EntityType="Self.Log_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Money_Count" EntityType="Self.Money_Count" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment_Type" EntityType="Self.Payment_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Type" EntityType="Self.Product_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report_Type" EntityType="Self.Report_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SHIFT_TYPE" EntityType="Self.SHIFT_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Total_Transactions" EntityType="Self.Total_Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaction_Type" EntityType="Self.Transaction_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_TYPE" EntityType="Self.USER_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User].[ID] AS [ID], 
+    [User].[Username] AS [Username], 
+    [User].[Password] AS [Password], 
+    [User].[DT_End] AS [DT_End], 
+    [User].[ID_USER_TYPE] AS [ID_USER_TYPE]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Calc_Money_Count" Association="Self.FK_Calc_Money_Count">
+            <End Role="Money_Count" EntitySet="Money_Count" />
+            <End Role="Calc" EntitySet="Calc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calc_Money_Count1" Association="Self.FK_Calc_Money_Count1">
+            <End Role="Money_Count" EntitySet="Money_Count" />
+            <End Role="Calc" EntitySet="Calc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calc_Money_Count2" Association="Self.FK_Calc_Money_Count2">
+            <End Role="Money_Count" EntitySet="Money_Count" />
+            <End Role="Calc" EntitySet="Calc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS" Association="Self.FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS">
+            <End Role="EGALI_PASSWORDS" EntitySet="EGALI_PASSWORDS" />
+            <End Role="EGALI_PASSWORDS_HISTORY" EntitySet="EGALI_PASSWORDS_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LIST_DOCUMENT" Association="Self.FK_LIST_DOCUMENT">
+            <End Role="DOCUMENT" EntitySet="DOCUMENT" />
+            <End Role="LIST" EntitySet="LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LIST_LIST_TYPE1" Association="Self.FK_LIST_LIST_TYPE1">
+            <End Role="LIST_TYPE" EntitySet="LIST_TYPE" />
+            <End Role="LIST" EntitySet="LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Log_Type" Association="Self.FK_Log_Log_Type">
+            <End Role="Log_Type" EntitySet="Log_Type" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Money_Count_Calc_Type" Association="Self.FK_Money_Count_Calc_Type">
+            <End Role="Calc_Type" EntitySet="Calc_Type" />
+            <End Role="Money_Count" EntitySet="Money_Count" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Action_Type" Association="Self.FK_Stock_Action_Type">
+            <End Role="Action_Type" EntitySet="Action_Type" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Product_Type" Association="Self.FK_Stock_Product_Type">
+            <End Role="Product_Type" EntitySet="Product_Type" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Total_Transactions" Association="Self.FK_Stock_Total_Transactions">
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_Calc" Association="Self.FK_Total_Transactions_Calc">
+            <End Role="Calc" EntitySet="Calc" />
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_Report_Type" Association="Self.FK_Total_Transactions_Report_Type">
+            <End Role="Report_Type" EntitySet="Report_Type" />
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_SHIFT_TYPE" Association="Self.FK_Total_Transactions_SHIFT_TYPE">
+            <End Role="SHIFT_TYPE" EntitySet="SHIFT_TYPE" />
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_Total_Transactions" Association="Self.FK_Total_Transactions_Total_Transactions">
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+            <End Role="Total_Transactions1" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_Card_Type" Association="Self.FK_Transactions_Card_Type">
+            <End Role="Card_Type" EntitySet="Card_Type" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_Payment_Type" Association="Self.FK_Transactions_Payment_Type">
+            <End Role="Payment_Type" EntitySet="Payment_Type" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_TotalTransactions" Association="Self.FK_Transactions_TotalTransactions">
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_Transaction_Type" Association="Self.FK_Transactions_Transaction_Type">
+            <End Role="Transaction_Type" EntitySet="Transaction_Type" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_USER_TYPE" Association="Self.FK_User_USER_TYPE">
+            <End Role="USER_TYPE" EntitySet="USER_TYPE" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HostelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HostelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Action_Type" EntityType="HostelModel.Action_Type" />
+          <EntitySet Name="Calcs" EntityType="HostelModel.Calc" />
+          <EntitySet Name="Calc_Type" EntityType="HostelModel.Calc_Type" />
+          <EntitySet Name="Card_Type" EntityType="HostelModel.Card_Type" />
+          <EntitySet Name="DOCUMENTs" EntityType="HostelModel.DOCUMENT" />
+          <EntitySet Name="EGALI_PASSWORDS" EntityType="HostelModel.EGALI_PASSWORDS" />
+          <EntitySet Name="EGALI_PASSWORDS_HISTORY" EntityType="HostelModel.EGALI_PASSWORDS_HISTORY" />
+          <EntitySet Name="House_Keeping" EntityType="HostelModel.House_Keeping" />
+          <EntitySet Name="LISTs" EntityType="HostelModel.LIST" />
+          <EntitySet Name="LIST_TYPE" EntityType="HostelModel.LIST_TYPE" />
+          <EntitySet Name="Logs" EntityType="HostelModel.Log" />
+          <EntitySet Name="Log_Type" EntityType="HostelModel.Log_Type" />
+          <EntitySet Name="Money_Count" EntityType="HostelModel.Money_Count" />
+          <EntitySet Name="Payment_Type" EntityType="HostelModel.Payment_Type" />
+          <EntitySet Name="Product_Type" EntityType="HostelModel.Product_Type" />
+          <EntitySet Name="Report_Type" EntityType="HostelModel.Report_Type" />
+          <EntitySet Name="SHIFT_TYPE" EntityType="HostelModel.SHIFT_TYPE" />
+          <EntitySet Name="Stocks" EntityType="HostelModel.Stock" />
+          <EntitySet Name="sysdiagrams" EntityType="HostelModel.sysdiagram" />
+          <EntitySet Name="Total_Transactions" EntityType="HostelModel.Total_Transactions" />
+          <EntitySet Name="Transaction_Type" EntityType="HostelModel.Transaction_Type" />
+          <EntitySet Name="Transactions" EntityType="HostelModel.Transaction" />
+          <EntitySet Name="USER_TYPE" EntityType="HostelModel.USER_TYPE" />
+          <EntitySet Name="Users" EntityType="HostelModel.User" />
+          <AssociationSet Name="FK_Stock_Action_Type" Association="HostelModel.FK_Stock_Action_Type">
+            <End Role="Action_Type" EntitySet="Action_Type" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calc_Money_Count" Association="HostelModel.FK_Calc_Money_Count">
+            <End Role="Money_Count" EntitySet="Money_Count" />
+            <End Role="Calc" EntitySet="Calcs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calc_Money_Count1" Association="HostelModel.FK_Calc_Money_Count1">
+            <End Role="Money_Count" EntitySet="Money_Count" />
+            <End Role="Calc" EntitySet="Calcs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calc_Money_Count2" Association="HostelModel.FK_Calc_Money_Count2">
+            <End Role="Money_Count" EntitySet="Money_Count" />
+            <End Role="Calc" EntitySet="Calcs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_Calc" Association="HostelModel.FK_Total_Transactions_Calc">
+            <End Role="Calc" EntitySet="Calcs" />
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Money_Count_Calc_Type" Association="HostelModel.FK_Money_Count_Calc_Type">
+            <End Role="Calc_Type" EntitySet="Calc_Type" />
+            <End Role="Money_Count" EntitySet="Money_Count" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_Card_Type" Association="HostelModel.FK_Transactions_Card_Type">
+            <End Role="Card_Type" EntitySet="Card_Type" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LIST_DOCUMENT" Association="HostelModel.FK_LIST_DOCUMENT">
+            <End Role="DOCUMENT" EntitySet="DOCUMENTs" />
+            <End Role="LIST" EntitySet="LISTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS" Association="HostelModel.FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS">
+            <End Role="EGALI_PASSWORDS" EntitySet="EGALI_PASSWORDS" />
+            <End Role="EGALI_PASSWORDS_HISTORY" EntitySet="EGALI_PASSWORDS_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LIST_LIST_TYPE1" Association="HostelModel.FK_LIST_LIST_TYPE1">
+            <End Role="LIST_TYPE" EntitySet="LIST_TYPE" />
+            <End Role="LIST" EntitySet="LISTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Log_Type" Association="HostelModel.FK_Log_Log_Type">
+            <End Role="Log_Type" EntitySet="Log_Type" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_Payment_Type" Association="HostelModel.FK_Transactions_Payment_Type">
+            <End Role="Payment_Type" EntitySet="Payment_Type" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Product_Type" Association="HostelModel.FK_Stock_Product_Type">
+            <End Role="Product_Type" EntitySet="Product_Type" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_Report_Type" Association="HostelModel.FK_Total_Transactions_Report_Type">
+            <End Role="Report_Type" EntitySet="Report_Type" />
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_SHIFT_TYPE" Association="HostelModel.FK_Total_Transactions_SHIFT_TYPE">
+            <End Role="SHIFT_TYPE" EntitySet="SHIFT_TYPE" />
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Total_Transactions" Association="HostelModel.FK_Stock_Total_Transactions">
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Total_Transactions_Total_Transactions" Association="HostelModel.FK_Total_Transactions_Total_Transactions">
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+            <End Role="Total_Transactions1" EntitySet="Total_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_TotalTransactions" Association="HostelModel.FK_Transactions_TotalTransactions">
+            <End Role="Total_Transactions" EntitySet="Total_Transactions" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_Transaction_Type" Association="HostelModel.FK_Transactions_Transaction_Type">
+            <End Role="Transaction_Type" EntitySet="Transaction_Type" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_USER_TYPE" Association="HostelModel.FK_User_USER_TYPE">
+            <End Role="USER_TYPE" EntitySet="USER_TYPE" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Action_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stocks" Relationship="HostelModel.FK_Stock_Action_Type" FromRole="Action_Type" ToRole="Stock" />
+        </EntityType>
+        <EntityType Name="Calc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DT_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ID_Money_Count" Type="Int32" />
+          <Property Name="ID_Money_Count2" Type="Int32" />
+          <Property Name="ID_Money_Count3" Type="Int32" />
+          <NavigationProperty Name="Money_Count" Relationship="HostelModel.FK_Calc_Money_Count" FromRole="Calc" ToRole="Money_Count" />
+          <NavigationProperty Name="Money_Count1" Relationship="HostelModel.FK_Calc_Money_Count1" FromRole="Calc" ToRole="Money_Count" />
+          <NavigationProperty Name="Money_Count2" Relationship="HostelModel.FK_Calc_Money_Count2" FromRole="Calc" ToRole="Money_Count" />
+          <NavigationProperty Name="Total_Transactions" Relationship="HostelModel.FK_Total_Transactions_Calc" FromRole="Calc" ToRole="Total_Transactions" />
+        </EntityType>
+        <EntityType Name="Calc_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DT_End" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Money_Count" Relationship="HostelModel.FK_Money_Count_Calc_Type" FromRole="Calc_Type" ToRole="Money_Count" />
+        </EntityType>
+        <EntityType Name="Card_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transactions" Relationship="HostelModel.FK_Transactions_Card_Type" FromRole="Card_Type" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="DOCUMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FILE_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FILE_SIZE" Type="Int64" Nullable="false" />
+          <Property Name="FILE_TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FILE_CONTENT" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="DT_INSERT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DT_DELETE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LISTs" Relationship="HostelModel.FK_LIST_DOCUMENT" FromRole="DOCUMENT" ToRole="LIST" />
+        </EntityType>
+        <EntityType Name="EGALI_PASSWORDS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EGALI_PASSWORDS_HISTORY" Relationship="HostelModel.FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS" FromRole="EGALI_PASSWORDS" ToRole="EGALI_PASSWORDS_HISTORY" />
+        </EntityType>
+        <EntityType Name="EGALI_PASSWORDS_HISTORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogLogin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_EGALI_PASSWORDS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EGALI_PASSWORDS" Relationship="HostelModel.FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS" FromRole="EGALI_PASSWORDS_HISTORY" ToRole="EGALI_PASSWORDS" />
+        </EntityType>
+        <EntityType Name="House_Keeping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Room_Number" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adults" Type="Int32" Nullable="false" />
+          <Property Name="DT_Registro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogLogin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_LIST_TYPE" Type="Int32" Nullable="false" />
+          <Property Name="CHECK_IN" Type="DateTime" Precision="3" />
+          <Property Name="CHECK_OUT" Type="DateTime" Precision="3" />
+          <Property Name="DT_START_BLOCK" Type="DateTime" Precision="3" />
+          <Property Name="DT_START_BOOK" Type="DateTime" Precision="3" />
+          <Property Name="NOTES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FIRST_NAME_GUEST" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_NAME_GUEST" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LOGLOGIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_DOCUMENT" Type="Int32" />
+          <NavigationProperty Name="DOCUMENT" Relationship="HostelModel.FK_LIST_DOCUMENT" FromRole="LIST" ToRole="DOCUMENT" />
+          <NavigationProperty Name="LIST_TYPE" Relationship="HostelModel.FK_LIST_LIST_TYPE1" FromRole="LIST" ToRole="LIST_TYPE" />
+        </EntityType>
+        <EntityType Name="LIST_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LISTs" Relationship="HostelModel.FK_LIST_LIST_TYPE1" FromRole="LIST_TYPE" ToRole="LIST" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControllerAction" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogLogin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Error" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActionParameters" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_LOG_TYPE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Log_Type" Relationship="HostelModel.FK_Log_Log_Type" FromRole="Log" ToRole="Log_Type" />
+        </EntityType>
+        <EntityType Name="Log_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Logs" Relationship="HostelModel.FK_Log_Log_Type" FromRole="Log_Type" ToRole="Log" />
+        </EntityType>
+        <EntityType Name="Money_Count">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Qnt_1_Cent" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_2_Cents" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_5_Cents" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_10_Cents" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_20_Cents" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_50_Cents" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_1_Euro" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_2_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_5_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_10_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_20_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_50_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_100_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_200_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Qnt_500_Euros" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="DT_Reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogLogin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Calc_Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Calcs" Relationship="HostelModel.FK_Calc_Money_Count" FromRole="Money_Count" ToRole="Calc" />
+          <NavigationProperty Name="Calcs1" Relationship="HostelModel.FK_Calc_Money_Count1" FromRole="Money_Count" ToRole="Calc" />
+          <NavigationProperty Name="Calcs2" Relationship="HostelModel.FK_Calc_Money_Count2" FromRole="Money_Count" ToRole="Calc" />
+          <NavigationProperty Name="Calc_Type" Relationship="HostelModel.FK_Money_Count_Calc_Type" FromRole="Money_Count" ToRole="Calc_Type" />
+        </EntityType>
+        <EntityType Name="Payment_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transactions" Relationship="HostelModel.FK_Transactions_Payment_Type" FromRole="Payment_Type" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="Product_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stocks" Relationship="HostelModel.FK_Stock_Product_Type" FromRole="Product_Type" ToRole="Stock" />
+        </EntityType>
+        <EntityType Name="Report_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Total_Transactions" Relationship="HostelModel.FK_Total_Transactions_Report_Type" FromRole="Report_Type" ToRole="Total_Transactions" />
+        </EntityType>
+        <EntityType Name="SHIFT_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Total_Transactions" Relationship="HostelModel.FK_Total_Transactions_SHIFT_TYPE" FromRole="SHIFT_TYPE" ToRole="Total_Transactions" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PRODUCT_TYPE" Type="Int32" Nullable="false" />
+          <Property Name="AMOUNT" Type="Int32" Nullable="false" />
+          <Property Name="DT_Entrada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LOGLOGIN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_ACTION_TYPE" Type="Int32" Nullable="false" />
+          <Property Name="ID_TOTAL_TRANSACTION" Type="Int32" />
+          <NavigationProperty Name="Action_Type" Relationship="HostelModel.FK_Stock_Action_Type" FromRole="Stock" ToRole="Action_Type" />
+          <NavigationProperty Name="Product_Type" Relationship="HostelModel.FK_Stock_Product_Type" FromRole="Stock" ToRole="Product_Type" />
+          <NavigationProperty Name="Total_Transactions" Relationship="HostelModel.FK_Stock_Total_Transactions" FromRole="Stock" ToRole="Total_Transactions" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Total_Transactions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalTransactions" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalFinal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DifferenceFinalCalc" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DT_Reg" Type="DateTime" Precision="3" />
+          <Property Name="LogLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Calc" Type="Int32" />
+          <Property Name="ID_Last_Transaction" Type="Int32" />
+          <Property Name="ID_Report_Type" Type="Int32" />
+          <Property Name="Last_Cashier_Total" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ID_SHIFT_TYPE" Type="Int32" />
+          <Property Name="DayMonthYearReference" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Calc" Relationship="HostelModel.FK_Total_Transactions_Calc" FromRole="Total_Transactions" ToRole="Calc" />
+          <NavigationProperty Name="Report_Type" Relationship="HostelModel.FK_Total_Transactions_Report_Type" FromRole="Total_Transactions" ToRole="Report_Type" />
+          <NavigationProperty Name="SHIFT_TYPE" Relationship="HostelModel.FK_Total_Transactions_SHIFT_TYPE" FromRole="Total_Transactions" ToRole="SHIFT_TYPE" />
+          <NavigationProperty Name="Stocks" Relationship="HostelModel.FK_Stock_Total_Transactions" FromRole="Total_Transactions" ToRole="Stock" />
+          <NavigationProperty Name="Total_Transactions1" Relationship="HostelModel.FK_Total_Transactions_Total_Transactions" FromRole="Total_Transactions" ToRole="Total_Transactions1" />
+          <NavigationProperty Name="Total_Transactions2" Relationship="HostelModel.FK_Total_Transactions_Total_Transactions" FromRole="Total_Transactions1" ToRole="Total_Transactions" />
+          <NavigationProperty Name="Transactions" Relationship="HostelModel.FK_Transactions_TotalTransactions" FromRole="Total_Transactions" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="Transaction_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transactions" Relationship="HostelModel.FK_Transactions_Transaction_Type" FromRole="Transaction_Type" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DT_Reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogLogin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Reservation_Number" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuestName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Transaction_Type" Type="Int32" />
+          <Property Name="ID_Payment_Type" Type="Int32" />
+          <Property Name="ID_Card_Type" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ID_Total_Transactions" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Card_Type" Relationship="HostelModel.FK_Transactions_Card_Type" FromRole="Transaction" ToRole="Card_Type" />
+          <NavigationProperty Name="Payment_Type" Relationship="HostelModel.FK_Transactions_Payment_Type" FromRole="Transaction" ToRole="Payment_Type" />
+          <NavigationProperty Name="Total_Transactions" Relationship="HostelModel.FK_Transactions_TotalTransactions" FromRole="Transaction" ToRole="Total_Transactions" />
+          <NavigationProperty Name="Transaction_Type" Relationship="HostelModel.FK_Transactions_Transaction_Type" FromRole="Transaction" ToRole="Transaction_Type" />
+        </EntityType>
+        <EntityType Name="USER_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="HostelModel.FK_User_USER_TYPE" FromRole="USER_TYPE" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DT_End" Type="DateTime" Precision="3" />
+          <Property Name="ID_USER_TYPE" Type="Int32" />
+          <NavigationProperty Name="USER_TYPE" Relationship="HostelModel.FK_User_USER_TYPE" FromRole="User" ToRole="USER_TYPE" />
+        </EntityType>
+        <Association Name="FK_Stock_Action_Type">
+          <End Type="HostelModel.Action_Type" Role="Action_Type" Multiplicity="1" />
+          <End Type="HostelModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ID_ACTION_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calc_Money_Count">
+          <End Type="HostelModel.Money_Count" Role="Money_Count" Multiplicity="0..1" />
+          <End Type="HostelModel.Calc" Role="Calc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Money_Count">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calc">
+              <PropertyRef Name="ID_Money_Count" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calc_Money_Count1">
+          <End Type="HostelModel.Money_Count" Role="Money_Count" Multiplicity="0..1" />
+          <End Type="HostelModel.Calc" Role="Calc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Money_Count">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calc">
+              <PropertyRef Name="ID_Money_Count2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calc_Money_Count2">
+          <End Type="HostelModel.Money_Count" Role="Money_Count" Multiplicity="0..1" />
+          <End Type="HostelModel.Calc" Role="Calc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Money_Count">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calc">
+              <PropertyRef Name="ID_Money_Count3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_Calc">
+          <End Type="HostelModel.Calc" Role="Calc" Multiplicity="0..1" />
+          <End Type="HostelModel.Total_Transactions" Role="Total_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions">
+              <PropertyRef Name="ID_Calc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Money_Count_Calc_Type">
+          <End Type="HostelModel.Calc_Type" Role="Calc_Type" Multiplicity="1" />
+          <End Type="HostelModel.Money_Count" Role="Money_Count" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calc_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Money_Count">
+              <PropertyRef Name="ID_Calc_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_Card_Type">
+          <End Type="HostelModel.Card_Type" Role="Card_Type" Multiplicity="0..1" />
+          <End Type="HostelModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="ID_Card_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LIST_DOCUMENT">
+          <End Type="HostelModel.DOCUMENT" Role="DOCUMENT" Multiplicity="0..1" />
+          <End Type="HostelModel.LIST" Role="LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LIST">
+              <PropertyRef Name="ID_DOCUMENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EGALI_PASSWORDS_HISTORY_EGALI_PASSWORDS">
+          <End Type="HostelModel.EGALI_PASSWORDS" Role="EGALI_PASSWORDS" Multiplicity="1" />
+          <End Type="HostelModel.EGALI_PASSWORDS_HISTORY" Role="EGALI_PASSWORDS_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EGALI_PASSWORDS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EGALI_PASSWORDS_HISTORY">
+              <PropertyRef Name="ID_EGALI_PASSWORDS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LIST_LIST_TYPE1">
+          <End Type="HostelModel.LIST_TYPE" Role="LIST_TYPE" Multiplicity="1" />
+          <End Type="HostelModel.LIST" Role="LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LIST_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LIST">
+              <PropertyRef Name="ID_LIST_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Log_Type">
+          <End Type="HostelModel.Log_Type" Role="Log_Type" Multiplicity="1" />
+          <End Type="HostelModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Log_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="ID_LOG_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_Payment_Type">
+          <End Type="HostelModel.Payment_Type" Role="Payment_Type" Multiplicity="0..1" />
+          <End Type="HostelModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="ID_Payment_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Product_Type">
+          <End Type="HostelModel.Product_Type" Role="Product_Type" Multiplicity="1" />
+          <End Type="HostelModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ID_PRODUCT_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_Report_Type">
+          <End Type="HostelModel.Report_Type" Role="Report_Type" Multiplicity="0..1" />
+          <End Type="HostelModel.Total_Transactions" Role="Total_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions">
+              <PropertyRef Name="ID_Report_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_SHIFT_TYPE">
+          <End Type="HostelModel.SHIFT_TYPE" Role="SHIFT_TYPE" Multiplicity="0..1" />
+          <End Type="HostelModel.Total_Transactions" Role="Total_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIFT_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions">
+              <PropertyRef Name="ID_SHIFT_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Total_Transactions">
+          <End Type="HostelModel.Total_Transactions" Role="Total_Transactions" Multiplicity="0..1" />
+          <End Type="HostelModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Transactions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ID_TOTAL_TRANSACTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Total_Transactions_Total_Transactions">
+          <End Type="HostelModel.Total_Transactions" Role="Total_Transactions" Multiplicity="0..1" />
+          <End Type="HostelModel.Total_Transactions" Role="Total_Transactions1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Transactions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Total_Transactions1">
+              <PropertyRef Name="ID_Last_Transaction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_TotalTransactions">
+          <End Type="HostelModel.Total_Transactions" Role="Total_Transactions" Multiplicity="1" />
+          <End Type="HostelModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Transactions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="ID_Total_Transactions" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_Transaction_Type">
+          <End Type="HostelModel.Transaction_Type" Role="Transaction_Type" Multiplicity="0..1" />
+          <End Type="HostelModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="ID_Transaction_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_USER_TYPE">
+          <End Type="HostelModel.USER_TYPE" Role="USER_TYPE" Multiplicity="0..1" />
+          <End Type="HostelModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_USER_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HostelModelStoreContainer" CdmEntityContainer="HostelEntities">
+          <EntitySetMapping Name="Action_Type">
+            <EntityTypeMapping TypeName="HostelModel.Action_Type">
+              <MappingFragment StoreEntitySet="Action_Type">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calcs">
+            <EntityTypeMapping TypeName="HostelModel.Calc">
+              <MappingFragment StoreEntitySet="Calc">
+                <ScalarProperty Name="ID_Money_Count3" ColumnName="ID_Money_Count3" />
+                <ScalarProperty Name="ID_Money_Count2" ColumnName="ID_Money_Count2" />
+                <ScalarProperty Name="ID_Money_Count" ColumnName="ID_Money_Count" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="LogLogin" ColumnName="LogLogin" />
+                <ScalarProperty Name="DT_reg" ColumnName="DT_reg" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calc_Type">
+            <EntityTypeMapping TypeName="HostelModel.Calc_Type">
+              <MappingFragment StoreEntitySet="Calc_Type">
+                <ScalarProperty Name="DT_End" ColumnName="DT_End" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Card_Type">
+            <EntityTypeMapping TypeName="HostelModel.Card_Type">
+              <MappingFragment StoreEntitySet="Card_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTs">
+            <EntityTypeMapping TypeName="HostelModel.DOCUMENT">
+              <MappingFragment StoreEntitySet="DOCUMENT">
+                <ScalarProperty Name="DT_DELETE" ColumnName="DT_DELETE" />
+                <ScalarProperty Name="DT_INSERT" ColumnName="DT_INSERT" />
+                <ScalarProperty Name="FILE_CONTENT" ColumnName="FILE_CONTENT" />
+                <ScalarProperty Name="FILE_TYPE" ColumnName="FILE_TYPE" />
+                <ScalarProperty Name="FILE_SIZE" ColumnName="FILE_SIZE" />
+                <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EGALI_PASSWORDS">
+            <EntityTypeMapping TypeName="HostelModel.EGALI_PASSWORDS">
+              <MappingFragment StoreEntitySet="EGALI_PASSWORDS">
+                <ScalarProperty Name="DT_Delete" ColumnName="DT_Delete" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EGALI_PASSWORDS_HISTORY">
+            <EntityTypeMapping TypeName="HostelModel.EGALI_PASSWORDS_HISTORY">
+              <MappingFragment StoreEntitySet="EGALI_PASSWORDS_HISTORY">
+                <ScalarProperty Name="ID_EGALI_PASSWORDS" ColumnName="ID_EGALI_PASSWORDS" />
+                <ScalarProperty Name="LogLogin" ColumnName="LogLogin" />
+                <ScalarProperty Name="DT_Reg" ColumnName="DT_Reg" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="House_Keeping">
+            <EntityTypeMapping TypeName="HostelModel.House_Keeping">
+              <MappingFragment StoreEntitySet="House_Keeping">
+                <ScalarProperty Name="LogLogin" ColumnName="LogLogin" />
+                <ScalarProperty Name="DT_Registro" ColumnName="DT_Registro" />
+                <ScalarProperty Name="Adults" ColumnName="Adults" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Room_Number" ColumnName="Room_Number" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LISTs">
+            <EntityTypeMapping TypeName="HostelModel.LIST">
+              <MappingFragment StoreEntitySet="LIST">
+                <ScalarProperty Name="ID_DOCUMENT" ColumnName="ID_DOCUMENT" />
+                <ScalarProperty Name="LOGLOGIN" ColumnName="LOGLOGIN" />
+                <ScalarProperty Name="LAST_NAME_GUEST" ColumnName="LAST_NAME_GUEST" />
+                <ScalarProperty Name="FIRST_NAME_GUEST" ColumnName="FIRST_NAME_GUEST" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+                <ScalarProperty Name="DT_START_BOOK" ColumnName="DT_START_BOOK" />
+                <ScalarProperty Name="DT_START_BLOCK" ColumnName="DT_START_BLOCK" />
+                <ScalarProperty Name="CHECK_OUT" ColumnName="CHECK_OUT" />
+                <ScalarProperty Name="CHECK_IN" ColumnName="CHECK_IN" />
+                <ScalarProperty Name="ID_LIST_TYPE" ColumnName="ID_LIST_TYPE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIST_TYPE">
+            <EntityTypeMapping TypeName="HostelModel.LIST_TYPE">
+              <MappingFragment StoreEntitySet="LIST_TYPE">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="HostelModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="ID_LOG_TYPE" ColumnName="ID_LOG_TYPE" />
+                <ScalarProperty Name="ActionParameters" ColumnName="ActionParameters" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="LogLogin" ColumnName="LogLogin" />
+                <ScalarProperty Name="DT_Reg" ColumnName="DT_Reg" />
+                <ScalarProperty Name="ControllerAction" ColumnName="ControllerAction" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Type">
+            <EntityTypeMapping TypeName="HostelModel.Log_Type">
+              <MappingFragment StoreEntitySet="Log_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Money_Count">
+            <EntityTypeMapping TypeName="HostelModel.Money_Count">
+              <MappingFragment StoreEntitySet="Money_Count">
+                <ScalarProperty Name="ID_Calc_Type" ColumnName="ID_Calc_Type" />
+                <ScalarProperty Name="LogLogin" ColumnName="LogLogin" />
+                <ScalarProperty Name="DT_Reg" ColumnName="DT_Reg" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Qnt_500_Euros" ColumnName="Qnt_500_Euros" />
+                <ScalarProperty Name="Qnt_200_Euros" ColumnName="Qnt_200_Euros" />
+                <ScalarProperty Name="Qnt_100_Euros" ColumnName="Qnt_100_Euros" />
+                <ScalarProperty Name="Qnt_50_Euros" ColumnName="Qnt_50_Euros" />
+                <ScalarProperty Name="Qnt_20_Euros" ColumnName="Qnt_20_Euros" />
+                <ScalarProperty Name="Qnt_10_Euros" ColumnName="Qnt_10_Euros" />
+                <ScalarProperty Name="Qnt_5_Euros" ColumnName="Qnt_5_Euros" />
+                <ScalarProperty Name="Qnt_2_Euros" ColumnName="Qnt_2_Euros" />
+                <ScalarProperty Name="Qnt_1_Euro" ColumnName="Qnt_1_Euro" />
+                <ScalarProperty Name="Qnt_50_Cents" ColumnName="Qnt_50_Cents" />
+                <ScalarProperty Name="Qnt_20_Cents" ColumnName="Qnt_20_Cents" />
+                <ScalarProperty Name="Qnt_10_Cents" ColumnName="Qnt_10_Cents" />
+                <ScalarProperty Name="Qnt_5_Cents" ColumnName="Qnt_5_Cents" />
+                <ScalarProperty Name="Qnt_2_Cents" ColumnName="Qnt_2_Cents" />
+                <ScalarProperty Name="Qnt_1_Cent" ColumnName="Qnt_1_Cent" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_Type">
+            <EntityTypeMapping TypeName="HostelModel.Payment_Type">
+              <MappingFragment StoreEntitySet="Payment_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Type">
+            <EntityTypeMapping TypeName="HostelModel.Product_Type">
+              <MappingFragment StoreEntitySet="Product_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_Type">
+            <EntityTypeMapping TypeName="HostelModel.Report_Type">
+              <MappingFragment StoreEntitySet="Report_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SHIFT_TYPE">
+            <EntityTypeMapping TypeName="HostelModel.SHIFT_TYPE">
+              <MappingFragment StoreEntitySet="SHIFT_TYPE">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="HostelModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="ID_TOTAL_TRANSACTION" ColumnName="ID_TOTAL_TRANSACTION" />
+                <ScalarProperty Name="ID_ACTION_TYPE" ColumnName="ID_ACTION_TYPE" />
+                <ScalarProperty Name="LOGLOGIN" ColumnName="LOGLOGIN" />
+                <ScalarProperty Name="DT_Entrada" ColumnName="DT_Entrada" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="ID_PRODUCT_TYPE" ColumnName="ID_PRODUCT_TYPE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HostelModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Total_Transactions">
+            <EntityTypeMapping TypeName="HostelModel.Total_Transactions">
+              <MappingFragment StoreEntitySet="Total_Transactions">
+                <ScalarProperty Name="DayMonthYearReference" ColumnName="DayMonthYearReference" />
+                <ScalarProperty Name="ID_SHIFT_TYPE" ColumnName="ID_SHIFT_TYPE" />
+                <ScalarProperty Name="Last_Cashier_Total" ColumnName="Last_Cashier_Total" />
+                <ScalarProperty Name="ID_Report_Type" ColumnName="ID_Report_Type" />
+                <ScalarProperty Name="ID_Last_Transaction" ColumnName="ID_Last_Transaction" />
+                <ScalarProperty Name="ID_Calc" ColumnName="ID_Calc" />
+                <ScalarProperty Name="LogLogin" ColumnName="LogLogin" />
+                <ScalarProperty Name="DT_Reg" ColumnName="DT_Reg" />
+                <ScalarProperty Name="DifferenceFinalCalc" ColumnName="DifferenceFinalCalc" />
+                <ScalarProperty Name="TotalFinal" ColumnName="TotalFinal" />
+                <ScalarProperty Name="TotalTransactions" ColumnName="TotalTransactions" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transaction_Type">
+            <EntityTypeMapping TypeName="HostelModel.Transaction_Type">
+              <MappingFragment StoreEntitySet="Transaction_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="HostelModel.Transaction">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="ID_Total_Transactions" ColumnName="ID_Total_Transactions" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID_Card_Type" ColumnName="ID_Card_Type" />
+                <ScalarProperty Name="ID_Payment_Type" ColumnName="ID_Payment_Type" />
+                <ScalarProperty Name="ID_Transaction_Type" ColumnName="ID_Transaction_Type" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="Reservation_Number" ColumnName="Reservation_Number" />
+                <ScalarProperty Name="LogLogin" ColumnName="LogLogin" />
+                <ScalarProperty Name="DT_Reg" ColumnName="DT_Reg" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_TYPE">
+            <EntityTypeMapping TypeName="HostelModel.USER_TYPE">
+              <MappingFragment StoreEntitySet="USER_TYPE">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HostelModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID_USER_TYPE" ColumnName="ID_USER_TYPE" />
+                <ScalarProperty Name="DT_End" ColumnName="DT_End" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

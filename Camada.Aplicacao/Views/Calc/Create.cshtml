@@ -1,0 +1,243 @@
+﻿@model Camada.Dominio.Mensagens.TelaCalc
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2><i class="fa fa-pencil"></i> Create</h2>
+<div class="form-horizontal">
+    <h4>Calculator</h4>
+    <hr />
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalCalc, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.TotalCalc, new
+           {
+               htmlAttributes = new
+               {
+                   @class = "form-control",
+                   @readonly = "readonly"
+               }
+           })
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label for="IDCalc_Type" class="col-sm-2 control-label">Calc Type</label>
+            <div class="col-sm-2">
+                @Html.DropDownList("IDCalc_Type", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDCalc_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Qnt_1_Cent, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_1_Cent, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_1_Cent, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.Qnt_2_Cents, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_2_Cents, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_2_Cents, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_5_Cents, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_5_Cents, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_5_Cents, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Qnt_10_Cents, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_10_Cents, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_10_Cents, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_20_Cents, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_20_Cents, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_20_Cents, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_50_Cents, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_50_Cents, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_50_Cents, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Qnt_1_Euro, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_1_Euro, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_1_Euro, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_2_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_2_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_2_Euros, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_5_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_5_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_5_Euros, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Qnt_10_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_10_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_10_Euros, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_20_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_20_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_20_Euros, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_50_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_50_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_50_Euros, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Qnt_100_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_100_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_100_Euros, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_200_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_200_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_200_Euros, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Qnt_500_Euros, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Qnt_500_Euros, new { htmlAttributes = new { @class = "form-control countTotal", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Qnt_500_Euros, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalMoney_Count, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.TotalMoney_Count, new
+           {
+               htmlAttributes = new
+               {
+                   @class = "form-control",
+                   @min = "0",
+                   @readonly = "readonly"
+               }
+           })
+                @Html.ValidationMessageFor(model => model.TotalMoney_Count, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-default btn-sm pull-left" title="Create" value="Create" data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-floppy-o"></i> &nbsp;
+                    Create
+                    </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-5">
+                <button type="button" class="btn btn-default btn-sm pull-left" onclick="location.href='@Url.Action("Index", "Calc")'"
+                        data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-arrow-left"></i> &nbsp;
+                        Back to List
+                    </button>
+            </div>
+        </div>
+    </div>
+}
+
+<script language="javascript" type="text/javascript">
+
+    $('#IDCalc_Type').change(function () {
+        var id = $('#IDCalc_Type').val();
+        window.location.assign('/Calc/Create/' + id);
+    });
+
+    //$("#Create").on("click", function () {
+    //    alert('Your Message');
+    //});
+
+    $(function () {
+        $('.countTotal').on('keyup', function () {
+            var v1 = $('#Qnt_1_Cent').val() * '0.01';
+            var v2 = $('#Qnt_2_Cents').val() * '0.02';
+            var v3 = $('#Qnt_5_Cents').val() * '0.05';
+            var v4 = $('#Qnt_10_Cents').val() * '0.10';
+            var v5 = $('#Qnt_20_Cents').val() * '0.20';
+            var v6 = $('#Qnt_50_Cents').val() * '0.50';
+            var v7 = $('#Qnt_1_Euro').val() * '1.00';
+            var v8 = $('#Qnt_2_Euros').val() * '2.00';
+            var v9 = $('#Qnt_5_Euros').val() * '5.00';
+            var v10 = $('#Qnt_10_Euros').val() * '10.00';
+            var v11 = $('#Qnt_20_Euros').val() * '20.00';
+            var v12 = $('#Qnt_50_Euros').val() * '50.00';
+            var v13 = $('#Qnt_100_Euros').val() * '100.00';
+            var v14 = $('#Qnt_200_Euros').val() * '200.00';
+            var v15 = $('#Qnt_500_Euros').val() * '500.00';
+            var total = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12 + v13 + v14 + v15;
+            total = total.toFixed(2);
+            $('#TotalMoney_Count').val(total);
+        });
+    });
+
+    @*$('#ActivityIDReturn').change(function () {
+        $.ajax({
+            url: '@Url.Action("Action", "Controller")',
+            type: 'post',
+            data: {
+                Text: $('#TextField').val()
+            },
+            success: function (_result) {
+                $('#TaskDesc').val(_result.foo);
+            }
+        });
+    });*@
+
+
+
+    @* $(function () {
+      $('.txtC').on('focus', function () {
+          $(this).val($('.txtA').val() + " - " + $('.txtB').val());
+      });
+     });
+
+        $('#ActivityIDReturn').change(function () {
+        $.ajax({
+            url: '@Url.Action("Action", "Controller")',
+            type: 'post',
+            data: {
+                Text: $('#TextField').val()
+            },
+            success: function (_result) {
+                $('#TaskDesc').val(_result.foo);
+            }
+        });
+    });*@
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

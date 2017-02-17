@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Camada.Dominio.Mensagens.GridStock>
+
+<h2><i class="fa fa-search"></i> Search</h2>
+<div class="form-horizontal">
+    <h4>Stock</h4>
+</div>
+<div style="padding-bottom: 40px; padding-top: 10px;">
+    <button type="button" class="btn btn-default btn-sm pull-left" onclick="location.href='@Url.Action("Create", "Stocks")'"
+            data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-file-o"></i> &nbsp;
+                            Create New
+                    </button>
+</div>
+<div style="padding-bottom: 30px; padding-top: 10px;">
+    <button type="button" class="btn btn-default btn-sm pull-left" onclick="location.href='@Url.Action("StockControl", "Stocks")'"
+            data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-list"></i> &nbsp;
+                        List Stock Control
+                    </button>
+</div>
+<hr />
+
+<div class="table-responsive">
+    <table id="gridStock" class="table table-striped table-bordered table-hover table-responsive dataTable no-footer" cellspacing="0" style=" overflow scroll;">
+        <thead class="sorted_head">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DT_Reg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LogLogin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Action_Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th width="60px">
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+
+
+
+
+<script language="javascript" type="text/javascript">
+
+    var filtro = (new function () {
+        var self = this;
+
+        this.tabela = null;
+        this.URL = '';
+        this.idPayment_Type = null;
+        this.txtNome = null;
+        this.dtInicio = null;
+        this.dtFim = null;
+
+        this.carregar = function () {
+            try {
+                self.idPayment_Type = $("#cmbPayment_Type").val();
+                self.txtNome = $("#txtDtInicio").val();
+                self.dtInicio = $("#txtDtFim").val();
+                self.dtFim = $("#txtNome").val();
+                self.getDataTable().draw();
+            }
+            catch (e) {
+                console.log(e);
+            }
+            return false;
+        };
+
+        this.getDataTable = function () {
+            return self.tabela.DataTable();
+        };
+
+        this.editar = function () {
+            var data = self.getDataTable().row($(this).parents('tr')).data();
+            var url = '@Url.Action("Details", "Stocks")';
+            url = url + '/' + data[0];
+            window.location.assign(url);
+        };
+
+        this.remover = function (e) {
+            var data = self.getDataTable().row($(this).parents('tr')).data();
+            var url = '@Url.Action("Delete", "Stocks")';
+            url = url + '/' + data[0];
+            window.location.assign(url);
+        };
+
+        this.init = function () {
+            self.tabela = $('#gridStock');
+
+            self.tabela.DataTable({
+                "language": {
+                    "url": "/Scripts/DataTables/Portuguese-Brasil.txt"
+                },
+                stateSave: true,
+                "searching": true,
+                "dom": 'rt<"bottom"lp<"clear">>',
+                "bServerSide": true,
+                "bProcessing": true,
+                "bSort": true,
+                "sPaginationType": "full_numbers",
+                "sAjaxSource": self.URL,
+                "columnDefs": [
+                     {
+                         "targets": [0],
+                         "visible": false,
+                         "searchable": false
+                     },
+                       {
+                           "targets": -1,
+                           "data": null,
+                           "bSortable": false,
+                           "defaultContent": "&nbsp;<i title='Detail' class='fa fa-edit fa-lg btnEditar corIconeEditar'></i> &nbsp;&nbsp;&nbsp; <i title='Delete' class='fa fa-trash fa-lg text-danger btnCancelar'></i> "
+                           //"defaultContent": "nda ainda"
+                       }
+                ],
+                serverParams: function (aoData) {
+                    $.each($("form").serializeArray(), function (indice, dados) {
+                        aoData.push(dados);
+                    });
+                    aoData.push({ "name": "myParam", "value": "myValue" });
+                }
+            }).on('processing.dt', function (e, settings, processing) {
+                var valor = $(this).val();
+                var btn = $('#btnExecReport');
+                //processing ? btn.button('loading') : btn.button('reset');
+            });
+
+            $('#gridStock tbody').on('click', '.btnEditar', self.editar);
+            $('#gridStock tbody').on('click', '.btnCancelar', self.remover);
+            $('#btnPesquisar').on('click', self.carregar);
+
+            $('#btnLimpar').on('click', function () {
+                //var $btn = $(this).button('loading');
+                self.idPayment_Type = $("#cmbPayment_Type").val(0);
+                self.txtNome = $("#txtNome").val("");
+                self.dtInicio = $("#txtDtInicio").val("");
+                self.dtFim = $("#txtDtFim").val("");
+                self.carregar();
+                //$btn.button('reset');
+                $('#btnLimpar').hide();
+            });
+
+            //$('#btnPesquisar').on('click', self.carregar);
+        };
+
+        return this;
+    });
+
+    filtro.URL = '@Url.Action("getGridStock", "Stocks")';
+    $(filtro.init);
+</script>

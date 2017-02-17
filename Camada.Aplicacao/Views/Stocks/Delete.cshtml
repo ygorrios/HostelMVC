@@ -1,0 +1,64 @@
+﻿@model Camada.Dominio.Entidades.Stock
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Stock</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AMOUNT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AMOUNT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_Entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_Entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOGLOGIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOGLOGIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Action_Type.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Action_Type.DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Type.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Type.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

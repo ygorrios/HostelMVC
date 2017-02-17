@@ -1,0 +1,130 @@
+﻿@model Camada.Dominio.Entidades.LIST
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LIST</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FILE_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FILE_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FILE_SIZE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FILE_SIZE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FILE_TYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FILE_TYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FILE_CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FILE_CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_INSERT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_INSERT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_DELETE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_DELETE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CHECK_IN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHECK_IN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CHECK_OUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHECK_OUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_START_BLOCK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_START_BLOCK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_START_BOOK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_START_BOOK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOTES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOTES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME_GUEST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME_GUEST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOGLOGIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOGLOGIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LIST_TYPE.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIST_TYPE.DESCRIPTION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

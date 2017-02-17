@@ -1,0 +1,193 @@
+﻿@model Camada.Dominio.Mensagens.TelaTransactions
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2><i class="fa fa-pencil"></i> Create</h2>
+<div class="form-horizontal">
+    <h4>Transaction</h4>
+    <hr />
+</div>
+
+
+@using (Html.BeginForm("Create", "Transactions", FormMethod.Post, new { id = "frmTransactions" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TotalCalc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.HiddenFor(model => model.ID_Last_Calc)
+                    @Html.EditorFor(model => model.TotalCalc, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control",
+                       @readonly = "readonly"
+                   }
+               })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TotalLastCashier, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.HiddenFor(model => model.ID_Last_Transaction)
+                    @Html.EditorFor(model => model.TotalLastCashier, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control",
+                       @readonly = "readonly"
+                   }
+               })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TotalLastCashierCard, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.HiddenFor(model => model.ID_Last_TransactionCard)
+                    @Html.EditorFor(model => model.TotalLastCashierCard, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control",
+                       @readonly = "readonly"
+                   }
+               })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TotalLastCashierVagner, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.HiddenFor(model => model.ID_Last_TransactionVagner)
+                    @Html.EditorFor(model => model.TotalLastCashierVagner, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control",
+                       @readonly = "readonly"
+                   }
+               })
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-13">
+                    <label for="txtCopied" class="col-sm-1 control-label">Past the Sheet here:</label>
+                    <div class="col-sm-10">
+                        @Html.TextArea("txtCopied", new { htmlAttributes = new { @class = "form-control pastSheet" }, @cols = 140 })
+                        @*<input type="text" style="width: 900px;" name="txtCopied" class="form-control sm" id="txtCopied" required>*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-13">
+                    <label for="cmbSHIFT_TYPE" class="col-sm-2 control-label">Shift Type</label>
+                    <div class="col-sm-2">
+                        @Html.DropDownList("cmbSHIFT_TYPE", (IEnumerable<SelectListItem>)ViewBag.cmbSHIFT_TYPE, new { @class = "form-control input-sm" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-13">
+                    <label for="cmbReport_Type" class="col-sm-2 control-label">Report Type</label>
+                    <div class="col-sm-2">
+                        @Html.DropDownList("cmbReport_Type", (IEnumerable<SelectListItem>)ViewBag.cmbReport_Type, new { @class = "form-control input-sm" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-default btn-sm pull-left" title="Exec Report" value="btnExecReport" data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-floppy-o"></i> &nbsp;
+                        Exec Report
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button type="button" class="btn btn-default btn-sm pull-left" onclick="location.href='@Url.Action("Index", "Transactions")'"
+                            data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-arrow-left"></i> &nbsp;
+                        Back to List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script language="javascript" type="text/javascript">
+    $('#frmTransactions').submit(function () {
+        var totalCalc = $('#TotalCalc').val().replace(/€/g, '').replace(/\,/g, '');
+        $('#TotalCalc').val(totalCalc);
+        var totalLastCashier = $('#TotalLastCashier').val().replace(/€/g, '').replace(/\,/g, '');
+        $('#TotalLastCashier').val(totalLastCashier);
+        var totalLastCashierCard = $('#TotalLastCashierCard').val().replace(/€/g, '').replace(/\,/g, '');
+        $('#TotalLastCashierCard').val(totalLastCashierCard);
+        var totalLastCashierVagner = $('#TotalLastCashierVagner').val().replace(/€/g, '').replace(/\,/g, '');
+        $('#TotalLastCashierVagner').val(totalLastCashierVagner);
+        $('#frmTransactions').submit();
+        return false;
+    });
+
+    //$('#cmbReport_Type').change(function () {
+    //    $('#TotalLastCashierVagner').val("");
+    //    if ($('#cmbReport_Type').val() == 3 || $('#cmbReport_Type').val() == 4)
+    //        $('#TotalLastCashierVagner').removeAttr('disabled');
+    //    else
+    //        $('#TotalLastCashierVagner').attr('disabled', 'disabled');
+    //});
+
+    //$('#txtCopied').change(function () {
+    //    var text = document.getElementById('text');
+    //    function resize () {
+    //        text.style.height = 'auto';
+    //        text.style.height = text.scrollHeight+'px';
+    //    }
+    //    /* 0-timeout to get the already changed text */
+    //    function delayedResize () {
+    //        window.setTimeout(resize, 0);
+    //    }
+    //    observe(text, 'change',  resize);
+    //    observe(text, 'cut',     delayedResize);
+    //    observe(text, 'paste',   delayedResize);
+    //    observe(text, 'drop',    delayedResize);
+    //    observe(text, 'keydown', delayedResize);
+
+    //    text.focus();
+    //    text.select();
+    //    resize();
+    //});
+
+    //var observe;
+    //if (window.attachEvent) {
+    //    observe = function (element, event, handler) {
+    //        element.attachEvent('on'+event, handler);
+    //    };
+    //}
+    ////else {
+    ////    observe = function (element, event, handler) {
+    ////        element.addEventListener(event, handler, false);
+    ////    };
+    //}
+
+    function h(e) {
+        $(e).css({ 'height': 'auto', 'overflow-y': 'hidden' }).height(e.scrollHeight);
+    }
+    $('textarea').each(function () {
+        h(this);
+    }).on('input', function () {
+        h(this);
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,40 @@
+﻿@*@using Microsoft.AspNet.Identity*@
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropPadding">
+                @Html.ActionLink("Hello, " + User.Identity.Name + "!", "Index", "Transactions", routeValues: null, htmlAttributes: new { title = "Home" })
+            </li>
+            <li class="dropPadding"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@*@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@</li>
+        <li class="dropPadding">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+
+<script type="text/javascript">
+    $(function () {
+        if ('@Request.IsAuthenticated' === 'True') {
+            $('.divMenu').show();
+        }
+        else {
+            $('.divMenu').hide();
+        }
+
+        if ('@User.Identity.Name' == 'ygor')
+            $('.restrict').show();
+        else
+            $('.restrict').hide();
+
+
+    });
+</script>

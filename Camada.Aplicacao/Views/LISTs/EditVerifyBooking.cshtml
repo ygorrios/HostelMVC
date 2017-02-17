@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2><i class="fa fa-pencil"></i> Edit</h2>
+<div class="form-horizontal">
+    <h4>Verify Booking</h4>
+</div>
+
+@using (Html.BeginForm("FileUpload", "LISTs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            @Html.Hidden("ID")
+            <hr />
+            @if (ViewBag.uploadImage)
+            {
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label for="file">Upload Image:</label>
+                        <input type="file" name="file" id="file" style="width: 100%;" />
+
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <div class="col-md-4">
+                        <input type="submit" value="Upload" class="submit" />
+                    </div>
+                </div>*@
+            }
+
+
+            <div class="form-group">
+                <div class="col-md-13">
+                    <label for="txtNotes" class="col-sm-1 control-label">Notes:</label>
+                    <div class="col-sm-10">
+                        @Html.TextArea("txtNotes", new { htmlAttributes = new { @class = "form-control pastSheet" }, @cols = 100 })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-default btn-sm pull-left" title="Exec Report" value="btnExecReport" data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-floppy-o"></i> &nbsp;
+                        Save
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button type="button" class="btn btn-default btn-sm pull-left" onclick="location.href='@Url.Action("Index", "LISTs")'"
+                            data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-arrow-left"></i> &nbsp;
+                        Back to List
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+}
+
+<script language="javascript" type="text/javascript">
+    function h(e) {
+        $(e).css({ 'height': 'auto', 'overflow-y': 'hidden' }).height(e.scrollHeight);
+    }
+    $('textarea').each(function () {
+        h(this);
+    }).on('input', function () {
+        h(this);
+    });
+</script>

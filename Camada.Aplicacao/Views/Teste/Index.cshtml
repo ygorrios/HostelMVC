@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Camada.Dominio.Entidades.AP_APE>
+
+@{
+    ViewBag.Title = "Teste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Página Inicial</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.numeroAto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataInicioVigenciaAto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.competencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.identificadorTAB_TipoAtoPessoal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.identificadorSFI_Servidor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.identificadorSFI_Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.identificadorUnidadeGestora)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroAto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataInicioVigenciaAto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.competencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.identificadorTAB_TipoAtoPessoal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.identificadorSFI_Servidor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.identificadorSFI_Cargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.identificadorUnidadeGestora)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+</table>

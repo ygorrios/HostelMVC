@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2><i class="fa fa-print"></i> Print</h2>
+<div class="form-horizontal">
+    <h4>House Keeping</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            <hr />
+
+            <div class="form-group">
+                @*<div class="col-md-13">
+                    <div class="col-sm-10">*@
+                @*</div>
+                    </div>*@
+                <div class="PDF" style="padding-left: 150px">
+                    <object data="~/Reports/HouseKeeping.pdf" id="obPDF" type="application/pdf" width="750" height="600">
+                        @*<a href="HouseKeeping.pdf">your.pdf</a>*@
+                    </object>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+<script language="javascript" type="text/javascript">
+    function h(e) {
+        $(e).css({ 'height': 'auto', 'overflow-y': 'hidden' }).height(e.scrollHeight);
+    }
+    $('textarea').each(function () {
+        h(this);
+    }).on('input', function () {
+        h(this);
+    });
+</script>

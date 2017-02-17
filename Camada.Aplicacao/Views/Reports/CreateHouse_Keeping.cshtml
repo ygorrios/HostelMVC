@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2><i class="fa fa-pencil"></i> Create</h2>
+<div class="form-horizontal">
+    <h4>House Keeping</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-13">
+                    <label for="txtCopied" class="col-sm-1 control-label">Past the Sheet here:</label>
+                    <div class="col-sm-10">
+                        @Html.TextArea("txtCopied", new { htmlAttributes = new { @class = "form-control pastSheet" }, @cols = 140 })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-default btn-sm pull-left" title="Exec Report" value="btnExecReport" data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-floppy-o"></i> &nbsp;
+                        Exec Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script language="javascript" type="text/javascript">
+    function h(e) {
+        $(e).css({'height':'auto','overflow-y':'hidden'}).height(e.scrollHeight);
+    }
+    $('textarea').each(function () {
+        h(this);
+    }).on('input', function () {
+        h(this);
+    });
+</script>

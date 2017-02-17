@@ -1,0 +1,74 @@
+﻿@model Camada.Dominio.Entidades.Log
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Log</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassMethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassMethod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ControllerAction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ControllerAction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_Reg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_Reg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Error)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Error)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActionParameters)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActionParameters)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

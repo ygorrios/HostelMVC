@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Camada.Dominio.Mensagens.GridTotalTransactionIndex>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (ViewBag.ShowPDF == null)
+{
+    <h2><i class="fa fa-search"></i> Search</h2>
+}
+else
+{
+    <h2><i class="glyphicon glyphicon-ok"></i> Result</h2>
+}
+
+<div class="form-horizontal">
+    <h4>Reports - End Of The Day</h4>
+</div>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            @if (ViewBag.ShowPDF == null)
+            {
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="txtDtInicio" class="col-sm-2 control-label">Data Início</label>
+                        <div class="col-sm-1">
+                            <input type="text" name="txtDtInicio" class="form-control input-sm dateTextField" id="txtDtInicio" />
+                        </div>
+                        <label for="ID_Report_Type" class="col-sm-2 control-label">Report Type</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownList("ID_Report_Type", (IEnumerable<SelectListItem>)ViewBag.ID_Report_Type, new { @class = "form-control input-sm" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="txtDtFim" class="col-sm-2 control-label">Data Fim</label>
+                        <div class="col-sm-1">
+                            <input type="text" name="txtDtFim" class="form-control input-sm dateTextField" id="txtDtFim" />
+                        </div>
+
+                        <label for="ID_User" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownList("ID_User", (IEnumerable<SelectListItem>)ViewBag.ID_User, new { @class = "form-control input-sm" })
+                        </div>
+
+                        <label for="ID_SHIFT_TYPE" class="col-sm-2 control-label">Shift Type</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownList("ID_SHIFT_TYPE", (IEnumerable<SelectListItem>)ViewBag.ID_SHIFT_TYPE, new { @class = "form-control input-sm" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <button type="submit" class="btn btn-default btn-sm pull-right" title="Search" value="btnPesquisar" data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Search ">
+                        <i class="fa fa-search"></i> &nbsp;
+                        Pesquisar
+                    </button>
+                    </div>
+                </div>
+            }
+            @if (ViewBag.ShowPDF != null && ViewBag.ShowPDF)
+            {
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <a class="btn btn-default btn-sm pull-right" title="Clean" id="btnLimpar" data-loading-text="
+                        <i class='fa fa-eraser'></i> Clean">
+                        <i class="fa fa-eraser"></i> &nbsp;
+                        Limpar
+                    </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+}
+
+
+@if (ViewBag.ShowPDF != null && ViewBag.ShowPDF)
+{
+    <div class="form-group showPDF">
+        <div class="PDF" style="padding-left: 150px">
+            <object data="~/Reports/EndOfTheDay.pdf" id="obPDF" type="application/pdf" width="750" height="600"></object>
+        </div>
+    </div>
+}
+
+<script language="javascript" type="text/javascript">
+
+    var filtro = (new function () {
+        var self = this;
+
+        this.tabela = null;
+        this.URL = '';
+        this.idPayment_Type = null;
+        this.txtNome = null;
+        this.dtInicio = null;
+        this.dtFim = null;
+
+        this.init = function () {
+
+            $('#btnLimpar').on('click', function () {
+                var url = '@Url.Action("ReportEndOfTheDay", "Reports")';
+                window.location.assign(url);
+                $('#btnLimpar').hide();
+
+                //self.idPayment_Type = $("#cmbPayment_Type").val(0);
+                //self.txtNome = $("#txtNome").val("");
+                //self.dtInicio = $("#txtDtInicio").val("");
+                //self.dtFim = $("#txtDtFim").val("");
+            });
+        };
+
+        return this;
+    });
+
+    $(filtro.init);
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

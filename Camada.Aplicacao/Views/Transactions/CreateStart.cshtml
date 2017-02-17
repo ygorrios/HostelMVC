@@ -1,0 +1,105 @@
+﻿@model Camada.Dominio.Mensagens.TelaTransactions
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2><i class="fa fa-pencil"></i> Create START</h2>
+<div class="form-horizontal">
+    <h4>Transaction</h4>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.TotalFinal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.TotalFinal, new { htmlAttributes = new { @class = "form-control onlyMoney", requerid = "required" } })
+                    @Html.ValidationMessageFor(model => model.TotalFinal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-default btn-sm pull-left" title="Exec Report" value="btnExecReport" data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-floppy-o"></i> &nbsp;
+                        Create
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button type="button" class="btn btn-default btn-sm pull-left" onclick="location.href='@Url.Action("Index", "Transactions")'"
+                            data-loading-text="
+                        <i class='fa fa-circle-o-notch fa-spin'></i> Copied ">
+                        <i class="fa fa-arrow-left"></i> &nbsp;
+                        Back to List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script language="javascript" type="text/javascript">
+
+    $('#cmbReport_Type').change(function () {
+        $('#TotalLastCashierVagner').val("");
+        if ($('#cmbReport_Type').val() == 3)
+            $('#TotalLastCashierVagner').removeAttr('disabled');
+        else
+            $('#TotalLastCashierVagner').attr('disabled', 'disabled');
+    });
+
+    //$('#txtCopied').change(function () {
+    //    var text = document.getElementById('text');
+    //    function resize () {
+    //        text.style.height = 'auto';
+    //        text.style.height = text.scrollHeight+'px';
+    //    }
+    //    /* 0-timeout to get the already changed text */
+    //    function delayedResize () {
+    //        window.setTimeout(resize, 0);
+    //    }
+    //    observe(text, 'change',  resize);
+    //    observe(text, 'cut',     delayedResize);
+    //    observe(text, 'paste',   delayedResize);
+    //    observe(text, 'drop',    delayedResize);
+    //    observe(text, 'keydown', delayedResize);
+
+    //    text.focus();
+    //    text.select();
+    //    resize();
+    //});
+
+    //var observe;
+    //if (window.attachEvent) {
+    //    observe = function (element, event, handler) {
+    //        element.attachEvent('on'+event, handler);
+    //    };
+    //}
+    ////else {
+    ////    observe = function (element, event, handler) {
+    ////        element.addEventListener(event, handler, false);
+    ////    };
+    //}
+
+    function h(e) {
+        $(e).css({'height':'auto','overflow-y':'hidden'}).height(e.scrollHeight);
+    }
+    $('textarea').each(function () {
+        h(this);
+    }).on('input', function () {
+        h(this);
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

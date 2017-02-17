@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Egali Hostel</title>
+    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <link rel="icon" href="@Url.Content("~/Content/Images/EgaliIcon.ico")" />
+
+    <script type="text/javascript">
+
+        $(function () {
+            $('.onlyMoney').on('keyup', function () {
+                var v = $(this).val();
+
+                v = v.replace(/\D/g, "") // permite digitar apenas numero
+                v = v.replace(/(\d{1})(\d{14})$/, "$1,$2") // coloca ponto antes dos ultimos digitos
+                v = v.replace(/(\d{1})(\d{11})$/, "$1,$2") // coloca ponto antes dos ultimos 11 digitos
+                v = v.replace(/(\d{1})(\d{8})$/, "$1,$2") // coloca ponto antes dos ultimos 8 digitos
+                v = v.replace(/(\d{1})(\d{5})$/, "$1,$2") // coloca ponto antes dos ultimos 5 digitos
+                v = v.replace(/(\d{1})(\d{1,2})$/, "$1.$2") // coloca virgula antes dos ultimos 2 digitos
+
+                $(this).val(v);
+            });
+        });
+    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuBar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a href="@Url.Action("Index", "Transactions")">
+                    <img src="@Url.Content("~/Content/Images/egaliHostelLogo.png")" class="navbar-brand imgLogoEgali" alt="" />
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="menuBar-navbar-collapse">
+                <div class="divMenu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown dropPadding">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Calculator</a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Search", "Index", "Calc")</li>
+                                        <li>@Html.ActionLink("Create", "Create", "Calc")</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transactions</a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Search", "Index", "Transactions")</li>
+                                        <li>@Html.ActionLink("Create", "Create", "Transactions")</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bank</a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Search", "Index", "Bank")</li>
+                                        <li>@Html.ActionLink("Create", "Create", "Bank")</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-submenu restrict">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stock</a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Search", "Index", "Stocks")</li>
+                                        <li>@Html.ActionLink("Create", "Create", "Stocks")</li>
+                                        <li>@Html.ActionLink("Stock Control", "StockControl", "Stocks")</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropPadding">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("House Keeping", "CreateHouse_Keeping", "Reports")</li>
+                                <li>@*@Html.ActionLink("Shifts", "ReportShift", "Reports")*@</li>
+                                <li>@Html.ActionLink("End Of The Day", "ReportEndOfTheDay", "Reports")</li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown dropPadding">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manual<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Fechamento de Caixa", "FechamentoCaixa", "Manual")</li>
+                                <li>@Html.ActionLink("Cleaners", "Cleaners", "Manual")</li>
+                            </ul>
+                        </li>
+                        <li class="dropPadding">@Html.ActionLink("About", "About", "Home")</li>
+
+
+                        <li class="dropdown dropPadding restrict">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Services <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                                <li>@Html.ActionLink("Create Start Transaction", "CreateStart", "Transactions")</li>
+                                <li>@Html.ActionLink("Egali Passwords", "Index", "EGALI_PASSWORDS")</li>
+                                <li class="dropdown dropdown-submenu restrict">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blacklist</a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Search", "IndexBlacklist", "LISTs")</li>
+                                        <li>@Html.ActionLink("Create", "CreateBlacklist", "LISTs")</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-submenu restrict">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Check Guest Limit</a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Search", "IndexVerifyBooking", "LISTs")</li>
+                                        <li>@Html.ActionLink("Create", "CreateVerifyBooking", "LISTs")</li>
+                                    </ul>
+                                </li>
+                                <li>@Html.ActionLink("Index Blacklist & Guest Limit", "Index", "LISTs")</li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="divMenuLogin">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container body-content" style="padding-top:15px;">
+        @*<button id="launchModal" type="button" data-toggle="modal" data-target="#modalDialog" ></button>*@
+        <div id="modalDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel">System Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row alert alert-success divAlert" id="divSucess">
+                            <div class="col-md-12">
+                                <label class="glyphicon glyphicon-ok control-label">  @ViewBag.StatusSucess</label>
+                                @*<span class="glyphicon glyphicon-ok" aria-hidden="true">@ViewBag.StatusSucess</span>*@  @*Cadastro Salvo com Sucesso!*@
+                            </div>
+                        </div>
+                        <div class="row alert alert-danger divAlert" id="divDanger">
+                            <div class="col-md-12">
+                                <label class="glyphicon glyphicon-thumbs-down control-label">  @ViewBag.StatusDanger</label>
+                                @*<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">@ViewBag.StatusDanger</span>*@
+                            </div>
+                        </div>
+                        <div class="row alert alert-info divAlert" id="divInfo">
+                            <div class="col-md-12">
+                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">  @ViewBag.StatusInfo</span>
+                            </div>
+                        </div>
+                        <div class="row alert alert-warning divAlert" id="divWarning">
+                            <div class="col-md-12">
+                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">  @ViewBag.StatusWarning</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <span class="pull-left" aria-hidden="true">@DateTime.Now</span>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        @if (ViewBag.StatusSucess != null)
+            {
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#divSucess').show();
+                    $('#divDanger').hide();
+                    $('#divInfo').hide();
+                    $('#divWarning').hide();
+                    $('#modalDialog').modal('show');
+                });
+            </script>
+            ViewBag.StatusSucess = null;
+        }
+        @if (ViewBag.StatusDanger != null)
+            {
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#divSucess').hide();
+                    $('#divDanger').show();
+                    $('#divInfo').hide();
+                    $('#divWarning').hide();
+                    $('#modalDialog').modal('show');
+                });
+            </script>
+            ViewBag.StatusDanger = null;
+        }
+        @if (ViewBag.StatusInfo != null)
+            {
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#divSucess').hide();
+                    $('#divDanger').hide();
+                    $('#divInfo').show();
+                    $('#divWarning').hide();
+                    $('#modalDialog').modal('show');
+                });
+            </script>
+            ViewBag.StatusInfo = null;
+        }
+        @if (ViewBag.StatusWarning != null)
+            {
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#divSucess').hide();
+                    $('#divDanger').hide();
+                    $('#divInfo').hide();
+                    $('#divWarning').show();
+                    $('#modalDialog').modal('show');
+                });
+            </script>
+            ViewBag.StatusWarning = null;
+        }
+
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>@DateTime.Now - Egali Hostel</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jquerymask")*@
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/Util")
+    @Scripts.Render("~/bundles/Mascaras")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

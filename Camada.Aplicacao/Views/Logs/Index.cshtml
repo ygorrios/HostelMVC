@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Camada.Dominio.Entidades.Log>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ControllerAction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DT_Reg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogLogin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Error)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionParameters)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ControllerAction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DT_Reg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogLogin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Error)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionParameters)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

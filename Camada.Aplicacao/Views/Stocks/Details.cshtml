@@ -1,0 +1,58 @@
+﻿@model Camada.Dominio.Entidades.Stock
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Stock</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AMOUNT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AMOUNT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_Entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_Entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOGLOGIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOGLOGIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Action_Type.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Action_Type.DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Type.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Type.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
